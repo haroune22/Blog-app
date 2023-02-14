@@ -3,6 +3,12 @@ import { useContext, useState } from 'react'
 import { Context } from '../../Context/Context';
 import './Write.css'
 import { apiurl } from '../../App'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+
+
+
 const Write = () => {
 
   const Categories = ['Music','Life','Sport','Style','Cinema','Tech']
@@ -12,6 +18,7 @@ const [title,settitle]=useState("");
 const [discreption,setdiscreption]=useState("");
 const [file,setfile]=useState(null);
 const {user}=useContext(Context)
+
 
 
 const handelsubmit = async (e) =>{
@@ -30,7 +37,7 @@ const handelsubmit = async (e) =>{
   const  newPost = {
     username:user.username,
     title,
-    discreption,
+    discreption:discreption.replace(/<[^>]+>/g, ''),
     categories:newCat.name,
   }
   if(file){
@@ -58,7 +65,7 @@ window.location.replace("/post/" + res.data._id);
            }
         <form className='writeForm' onSubmit={handelsubmit}>
            
-            <div className="writeFormGroup">
+            <div className="writeFormGroup1">
                 <label htmlFor="fileInput">
                 <i className="writeIcon fa-solid fa-plus"></i>
                 </label>
@@ -67,8 +74,8 @@ window.location.replace("/post/" + res.data._id);
                 placeholder='Title' className='writeInput' onChange={e=>settitle(e.target.value)} required autoFocus={true} />
             </div>
             <div className="writeFormGroup">
-                <textarea placeholder='Tell your Story....' autoFocus={true} onChange={e=>setdiscreption(e.target.value)} type='text' className='writeInput writeText'>
-                </textarea>
+                <ReactQuill  value={discreption} onChange={(value) => setdiscreption(value)}  className='writeInput writeText' />
+                
                
             </div>
             <button type='submit' className='writeSubmit'> Publish</button>

@@ -15,9 +15,17 @@ position: relative;
 }
 .writeFormGroup{
 margin-left: 150px;
+height: 300px;
+          overflow: scroll;
+          border: 1px solid lightgray;
 display: flex;
 align-items: center;
 }
+.writeFormGroup1{
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+    }
 .writeIcon{
     width: 25px;
     height: 25px;
@@ -41,7 +49,9 @@ align-items: center;
 }
 .writeText{
     font-size: 20px;
-height: auto;
+
+height: 100%;
+ border: none;
 }
 .category{
     margin-right: 800px;

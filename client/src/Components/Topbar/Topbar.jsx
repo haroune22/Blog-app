@@ -21,8 +21,8 @@ const Topbar = () => {
         <div className="topCenter">
             <ul className="topList">
                 <li className="topListItem"><Link to={"/"} style={{textDecoration:"none"}}>HOME</Link></li>
-                <li className="topListItem"><Link to={"/"} style={{textDecoration:"none"}}>ABOUT</Link></li>
-                <li className="topListItem"><Link to={"/"} style={{textDecoration:"none"}}>CONTACT</Link></li>
+                <li className="topListItem"><Link to={"/About"} style={{textDecoration:"none"}}>ABOUT</Link></li>
+                <li className="topListItem"><Link to={"/Contact"} style={{textDecoration:"none"}}>CONTACT</Link></li>
                 <li className="topListItem"><Link to={"/Write"} style={{textDecoration:"none"}}>WRITE</Link></li>
                 <li className="topListItem"><Link to={"/Login"} onClick={handellougout} style={{textDecoration:"none"}}>{user && "LOGOUT"}</Link></li>
             </ul>

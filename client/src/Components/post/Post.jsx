@@ -1,7 +1,8 @@
 
 import './Post.css'
 import {Link} from 'react-router-dom'
-
+import ReactQuill from 'react-quill'
+import DOMPurify from 'dompurify';
 
 const Post = ({post}) => {
     const PF = "http://localhost:4120/Images/"
@@ -28,8 +29,11 @@ const Post = ({post}) => {
            
             <hr/>
             <span className="postDate">{new Date(post.createdAt).toDateString()}</span>
-            <p className='postDesc'>
-                {post.discreption}
+            <p 
+            dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(post.discreption),
+              }}className='postDesc'>
+
             </p>
         </div>
     </div>

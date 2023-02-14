@@ -8,6 +8,7 @@ import Register from './pages/Register/Register'
 import Settings from './pages/Settings/Settings'
 import Single from './pages/Single/Single'
 import Write from './pages/Write/Write'
+import Contact from './pages/Contact/Contact'
 import {BrowserRouter as Router,
 Routes,
 Route,
@@ -26,6 +27,7 @@ const {user} = useContext(Context)
     <Topbar/>
     <Routes>
       <Route exact path="/" element={<Home/>}/>
+      <Route exact path="/Contact" element={<Contact/>}/>
       <Route exact path="/About" element={<About/>}/>
     <Route path="/Register" element={user ? <Home/> : <Register />}/>
         <Route path="/Login" element={user ? <Home/> : <Login />}/>

@@ -5,6 +5,7 @@ import axios from "axios"
 import { useState } from 'react'
 import { Context } from '../../Context/Context'
 import { apiurl } from "../../App"
+import ReactQuill from 'react-quill'
 
 const SinglePost = () => {
   const [title,settitle]=useState("")
@@ -30,7 +31,7 @@ const {user}=useContext(Context)
 const handelupdate= async()=>{
   try{
     await axios.put(`${apiurl}posts/`+path,
-    {username:user.username , title:title,discreption:discription})
+    {username:user.username , title:title,discreption:discription.replace(/<[^>]+>/g, '')})
    setupdateMode(false)
       }catch(err){
     
@@ -76,7 +77,7 @@ window.location.replace("/")
             <span className='singlePostDate'> {new Date(post.createdAt).toDateString()}</span>
           </div>
           {
-            updateMode ?<textarea className='singlePostDescinput' value={discription} onChange={(e)=>setdiscription(e.target.value)}/>:(
+            updateMode ?<ReactQuill className='singlePostDescinput' value={discription}  onChange={(value) => setdiscription(value)}/>:(
               <p className='singlePostDesc'>{discription}</p>
               
             )

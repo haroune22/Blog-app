@@ -1,0 +1,25 @@
+.contactpage{
+    display: flex;
+padding: 70px;
+    background-color: rgb(173, 167, 159);
+}
+.img{
+    width: 550px;
+    height: 450px;
+    margin-top: 40px;
+    object-fit: cover;
+}
+.contactform{
+   
+    background-color: white;
+    display: flex;
+    
+    padding: 50px;
+   
+    
+   
+}
+#termas{
+    text-decoration: none;
+    border: none;
+}

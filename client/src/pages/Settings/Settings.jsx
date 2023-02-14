@@ -80,11 +80,15 @@ const hendeldelete=async()=>{
       }
   return (<>
     
-    <div className='settings' style={{backgroundColor: dark ? "black" : "white",}}>
+    <div className='settings' style={{backgroundColor: dark ? " rgb(25, 23, 23)" : "white",}}>
         <div className="settingsWrapper">
     <div className="settingsTitle">
-        <span className="span settingsUpdateTitle">Welcome  To Your Account</span>
-        <button className="span settingsDeleteTitle" onClick={hendeldelete}>Delete Your Account</button>
+        <span className="span settingsUpdateTitle" style={{color: dark ? "white" : " red",}}>Welcome  To Your Account</span>
+        <button  style={{backgroundColor:dark?' rgb(25, 23, 23)':"white",color:dark?"white":" rgb(25, 23, 23)",borderColor:dark?' rgb(25, 23, 23)':"white",marginLeft:"250px"}} onClick={colorchange}>
+   <i class="fa-sharp fa-solid fa-moon"></i>
+   </button>
+        <button style={{color: dark ? "white" : "red",backgroundColor:dark?"rgb(25, 23, 23)":"white",}} className="span settingsDeleteTitle" onClick={hendeldelete}>Delete Your Account</button>
+        
     </div>
     <form className='settingsForm' onSubmit={handelsubmit}>
         <h3  style={{color: dark ? "white" : "black",}} >Profile Picture</h3>
@@ -95,16 +99,16 @@ const hendeldelete=async()=>{
             </label>
             <input type="file" id="fileInput" onChange={(e)=>setfile(e.target.files[0])} style={{display:"none"}}/>
         </div>
-        <label>  Username</label>
+        <label style={{color: dark ? "white" : " rgb(25, 23, 23)",}}>  Username</label>
         <input required type="text" placeholder={user.username} onChange={e=>setusername(e.target.value)}/>
-        <label>  Email</label>
+        <label style={{color: dark ? "white" : " rgb(25, 23, 23)",}}>  Email</label>
         <input type="text" required placeholder={user.email} name='email' value={email} onChange={e=>setemail(e.target.value)}/>
-        <label>  Password</label>
+        <label style={{color: dark ? "white" : " rgb(25, 23, 23)",}}>  Password</label>
         <input type="password" placeholder='Password' required onChange={e=>setpassword(e.target.value)}/>
         <button className="settingsSubmit" type='submit'>Update</button>
         {success && (
-            <span
-              style={{ color: "green", textAlign: "center", marginTop: "20px" }}
+            <span 
+              style={{ color: dark ? "white" : "green", textAlign: "center", marginTop: "20px" }}
             >
               Profile has been updated...
             </span>
@@ -112,20 +116,21 @@ const hendeldelete=async()=>{
            
     </form><br /><br />
     <div><br /><br />
-    <h3>Fell Free To Edit Your Posts And Profile</h3><br />
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio nisi voluptatem autem et facere quos laboriosam repudiandae fugit ut perferendis, nostrum voluptatum cum aspernatur quas sequi culpa veritatis. Magni, dolorum!</p>
-   <button onClick={colorchange}>dark</button>
+    <h3 style={{color: dark ? "white" : " rgb(25, 23, 23)",}}>Fell Free To Edit Your Posts And Profile</h3><br />
+       <p style={{color: dark ? "white" : " rgb(25, 23, 23)",}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio nisi voluptatem autem et facere quos laboriosam repudiandae fugit ut perferendis, nostrum voluptatum cum aspernatur quas sequi culpa veritatis. Magni, dolorum!</p>
+   
     </div>
    
         </div>
-            <Sidebar/>
+            <Sidebar dark={dark} darkmode={colorchange}/>
         </div>
-        
-        <span className='span-settingsUpdateTitle'>{posts.length}  Posts Created:
+        <div style={{backgroundColor: dark ? " rgb(25, 23, 23)" : "white",}}>
+        <span style={{color: dark ? "white" : "red",}} className='span-settingsUpdateTitle'>{posts.length}  Posts Created:
            </span><br /><br />
               <div className='posts'>
                 {sortedPosts.map(p=>(
             <Post post={p}/>   ))}
+              </div>
               </div>
    <Bottom/>
         </>)
